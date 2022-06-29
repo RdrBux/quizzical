@@ -75,6 +75,8 @@ body {
   display: flex;
   flex-direction: column;
   gap: 24px;
+  padding: 3rem;
+  max-width: 800px;
 }
 
 .quiz {
@@ -97,6 +99,8 @@ body {
   line-height: 12px;
   color: #293264;
   padding: 6px 20px;
+  display: grid;
+  place-content: center;
 }
 
 .quiz--answer:hover {
