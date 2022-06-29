@@ -22,18 +22,22 @@ export default function MainScreen() {
             {
               answer: decodeHtml(element.correct_answer),
               isCorrect: true,
+              isSelected: false,
             },
             {
               answer: decodeHtml(element.incorrect_answers[0]),
               isCorrect: false,
+              isSelected: false,
             },
             {
               answer: decodeHtml(element.incorrect_answers[1]),
               isCorrect: false,
+              isSelected: false,
             },
             {
               answer: decodeHtml(element.incorrect_answers[2]),
               isCorrect: false,
+              isSelected: false,
             },
           ],
         }))

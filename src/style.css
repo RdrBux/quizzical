@@ -88,6 +88,7 @@ body {
 .quiz--answers-container {
   display: flex;
   gap: 12px;
+  flex-wrap: wrap;
 }
 
 .quiz--answer {
