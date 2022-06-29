@@ -54,7 +54,6 @@ body {
   background-color: #4d5b9e;
   border: none;
   border-radius: 15px;
-  margin-top: 32px;
   padding: 16px 32px;
   cursor: pointer;
   align-self: center;
@@ -63,6 +62,7 @@ body {
 .start--button {
   font-size: 1.5rem;
   padding: 16px 64px;
+  margin-top: 32px;
 }
 
 .button:hover {
@@ -79,6 +79,14 @@ body {
   gap: 24px;
   padding: 3rem;
   max-width: 800px;
+}
+
+.main--foot {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  align-items: center;
+  margin-top: 16px;
 }
 
 .quiz {

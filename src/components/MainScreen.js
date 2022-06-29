@@ -7,6 +7,10 @@ export default function MainScreen() {
 
   const [checkResults, setCheckResults] = useState(false);
 
+  const [totalGames, setTotalGames] = useState(0);
+
+  const [correctAnswers, setCorrectAnswers] = useState(0);
+
   useEffect(() => {
     function decodeHtml(html) {
       var txt = document.createElement('textarea');
@@ -41,7 +45,7 @@ export default function MainScreen() {
       );
     }
     getData();
-  }, []);
+  }, [totalGames]);
 
   const questions = trivia.map((quiz) => (
     <Quiz
@@ -79,12 +83,48 @@ export default function MainScreen() {
     if (total === 5) return true;
   }
 
+  function checkCorrectAnswers() {
+    setCorrectAnswers(0);
+    trivia.forEach(
+      (quiz) =>
+        quiz.answers.some((answer) => answer.isSelected && answer.isCorrect) &&
+        setCorrectAnswers((prevState) => prevState + 1)
+    );
+  }
+
+  function handleResults() {
+    if (checkIfAllAnswers()) {
+      checkCorrectAnswers();
+      setCheckResults(true);
+    }
+  }
+
+  function handlePlayAgain() {
+    setCheckResults(false);
+    setTotalGames((prev) => !prev);
+  }
+
   return (
     <main className="main">
       {questions}
-      <button className="button" onClick={checkIfAllAnswers}>
-        Check answers
-      </button>
+      <div className="main--foot">
+        <div
+          className="main--foot"
+          style={{ display: checkResults ? '' : 'none' }}
+        >
+          <h3>You scored {correctAnswers}/5 correct answers</h3>
+          <button className="button" onClick={handlePlayAgain}>
+            Play again
+          </button>
+        </div>
+        <button
+          style={{ display: checkResults ? 'none' : '' }}
+          className="button"
+          onClick={handleResults}
+        >
+          Check answers
+        </button>
+      </div>
     </main>
   );
 }
