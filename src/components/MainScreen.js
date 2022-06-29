@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import ReactDOM from 'react-dom';
 import Quiz from './Quiz';
 import { nanoid } from 'nanoid';
+import Confetti from 'react-confetti';
 
 export default function MainScreen() {
   const [trivia, setTrivia] = useState([]);
@@ -26,6 +28,14 @@ export default function MainScreen() {
         id: nanoid(),
       };
     }
+
+    function shuffleArray(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+    }
+
     async function getData() {
       const resp = await fetch(
         'https://opentdb.com/api.php?amount=5&type=multiple'
@@ -39,7 +49,10 @@ export default function MainScreen() {
             formatAnswer(element.incorrect_answers[0]),
             formatAnswer(element.incorrect_answers[1]),
             formatAnswer(element.incorrect_answers[2]),
-          ],
+          ]
+            .map((value) => ({ value, sort: Math.random() }))
+            .sort((a, b) => a.sort - b.sort)
+            .map(({ value }) => value),
           id: nanoid(),
         }))
       );
@@ -106,6 +119,7 @@ export default function MainScreen() {
 
   return (
     <main className="main">
+      {checkResults && correctAnswers === 5 ? <Confetti /> : undefined}
       {questions}
       <div className="main--foot">
         <div
