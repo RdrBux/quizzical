@@ -4,7 +4,7 @@ import StartScreen from './components/StartScreen';
 function App() {
   return (
     <div className="App">
-      <MainScreen />
+      <StartScreen />
     </div>
   );
 }
