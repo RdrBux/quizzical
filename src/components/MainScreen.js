@@ -5,7 +5,7 @@ import { nanoid } from 'nanoid';
 export default function MainScreen() {
   const [trivia, setTrivia] = useState([]);
 
-  const [checkAnswers, setCheckAnswers] = useState(false);
+  const [checkResults, setCheckResults] = useState(false);
 
   useEffect(() => {
     function decodeHtml(html) {
@@ -50,6 +50,7 @@ export default function MainScreen() {
       question={quiz.question}
       answers={quiz.answers}
       selectAnswer={selectAnswer}
+      results={checkResults}
     />
   ));
 
@@ -75,7 +76,7 @@ export default function MainScreen() {
     trivia.forEach(
       (quiz) => quiz.answers.some((answer) => answer.isSelected) && total++
     );
-    if (total) return true;
+    if (total === 5) return true;
   }
 
   return (
