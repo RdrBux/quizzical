@@ -5,6 +5,8 @@ import { nanoid } from 'nanoid';
 export default function MainScreen() {
   const [trivia, setTrivia] = useState([]);
 
+  const [checkAnswers, setCheckAnswers] = useState(false);
+
   useEffect(() => {
     function decodeHtml(html) {
       var txt = document.createElement('textarea');
@@ -68,10 +70,20 @@ export default function MainScreen() {
     );
   }
 
+  function checkIfAllAnswers() {
+    let total = 0;
+    trivia.forEach(
+      (quiz) => quiz.answers.some((answer) => answer.isSelected) && total++
+    );
+    if (total) return true;
+  }
+
   return (
     <main className="main">
       {questions}
-      <button className="button">Check answers</button>
+      <button className="button" onClick={checkIfAllAnswers}>
+        Check answers
+      </button>
     </main>
   );
 }
