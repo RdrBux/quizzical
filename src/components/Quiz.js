@@ -1,15 +1,19 @@
 import React from 'react';
+import classNames from 'classnames';
 
 export default function Quiz(props) {
   const { id, question, answers, selectAnswer, results } = props;
 
   const allAnswers = answers.map((answ) => (
     <div
-      className="quiz--answer"
+      className={classNames({
+        'quiz--answer': true,
+        selected: answ.isSelected,
+        'results--correct': results && answ.isCorrect,
+        'results--incorrect': results && answ.isSelected && !answ.isCorrect,
+        'results--transparent': results && !answ.isCorrect,
+      })}
       onClick={() => selectAnswer(answ.id, id)}
-      style={{
-        backgroundColor: answ.isSelected ? '#D6DBF5' : '#F5F7FB',
-      }}
       key={answ.id}
       id={answ.id}
     >
