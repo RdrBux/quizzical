@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Karla:wght@700&display=swap');
+
+:root {
+  --main-font: 'Karla', sans-serif;
+  --secondary-font: 'Inter', sans-serif;
+}
+
+html {
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+  margin: 0;
+}
+
+body {
+  background-color: #f5f7fb;
+  min-height: 100vh;
+  background-image: url(./img/blob-yellow.svg), url(./img/blob-blue.svg);
+  background-position: right top, left bottom;
+  background-repeat: no-repeat, no-repeat;
+  display: grid;
+  place-content: center;
+  font-family: var(--main-font);
+  color: #293264;
+}
+
+.start {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.start--title {
+  font-size: 3rem;
+}
+
+.start--description {
+  font-size: 1.2rem;
+  font-family: var(--secondary-font);
+  font-weight: 400;
+  margin-top: 8px;
+}
+
+.button {
+  font-family: var(--secondary-font);
+  font-weight: 500;
+  font-size: 1rem;
+  color: #f5f7fb;
+  background-color: #4d5b9e;
+  border: none;
+  border-radius: 15px;
+  margin-top: 32px;
+  padding: 16px 32px;
+  cursor: pointer;
+  align-self: center;
+}
+
+.start--button {
+  font-size: 1.5rem;
+  padding: 16px 64px;
+}
+
+.button:hover {
+  background-color: #384272;
+}
+
+.button:focus {
+  box-shadow: 0px 5px 15px rgb(179, 179, 179);
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.quiz {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.quiz--answers-container {
+  display: flex;
+  gap: 12px;
+}
+
+.quiz--answer {
+  border: 1px solid #4d5b9e;
+  border-radius: 10px;
+  font-family: var(--secondary-font);
+  font-weight: 500;
+  font-size: 0.75rem;
+  line-height: 12px;
+  color: #293264;
+  padding: 6px 20px;
+}
+
+.quiz--answer:hover {
+  background-color: #e1e4f8;
+}
+
+hr {
+  border: 1px solid #dbdef0;
+}
